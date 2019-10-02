@@ -1,0 +1,31 @@
+### SIGNUP <===============
+POST http://localhost:4000/auth/signup HTTP/1.1
+content-type: application/json
+
+{
+    "name": "TestUser",
+    "email": "Test@testUser.com",
+    "password": "q123345"
+}
+### SIGNIN <===============
+POST http://localhost:3000/auth/signin HTTP/1.1
+content-type: application/json
+
+{
+    "email": "Test@testUser.com",
+    "password": "q123345"
+}
+### SIGNOUT <===============
+GET http://localhost:3000/auth/signout HTTP/1.1
+### CREATE_CATEGORY <===============
+POST http://localhost:3000/product/create/5d7e8cf33042b632578e271c HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDdlOGNmMzMwNDJiNjMyNTc4ZTI3MWMiLCJpYXQiOjE1Njg5Mjk1NTl9.UL9LFAshywu94XP_asP8JSkO6vW3ML_i-D2dU7Y6KQs
+
+{
+    "name": "Notebook",
+    "description": "First product",
+    "price": 20,
+    "category": "5d81618bb4c7e823347daa78",
+    "shipping": false,
+    "quantity": 100 
+}
