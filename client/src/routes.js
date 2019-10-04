@@ -4,8 +4,10 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Signin from './user/signin';
 import Signup from './user/signup';
 import Dashboard from './user/userDashboard';
+import AdminDashboard from './user/adminDashboard';
 import Home from './core/home';
 import PrivateRoute from './auth/privateRoute';
+import AdminRoute from './auth/adminRoute';
 
 const Routes = () => {
     return (
@@ -15,7 +17,16 @@ const Routes = () => {
                     <Route path="/" exact component={Home} />
                     <Route path="/signin" exact component={Signin} />
                     <Route path="/signup" exact component={Signup} />
-                    <PrivateRoute path="/dashboard" exact component={Dashboard} />
+                    <PrivateRoute
+                        path="/user/dashboard"
+                        exact
+                        component={Dashboard}
+                    />
+                    <AdminRoute 
+                        path="/admin/dashboard"
+                        exact
+                        component={AdminDashboard}
+                    />
                 </Switch>
             </BrowserRouter>
         </div>

@@ -11,6 +11,7 @@ const isActive = (history, path) => {
 }
 
 function Menu({history}) {
+    const authInfo = isAuthenticated();
     return (
         <div>
             <ul className="nav nav-tabs bg-primary">
@@ -23,17 +24,33 @@ function Menu({history}) {
                         Home
                     </Link>
                 </li>
-                <li className="nav-item">
-                    <Link
-                        className="nav-link"
-                        style={isActive(history, '/dashboard')}
-                        to="/dashboard"
-                    >
-                        Dashboard
-                    </Link>
-                </li>
 
-                {!isAuthenticated() && (
+
+                {(authInfo && authInfo.user.role === 1)
+                    ? (
+                        <li className="nav-item">
+                            <Link
+                                className="nav-link"
+                                style={isActive(history, '/admin/dashboard')}
+                                to="/admin/dashboard"
+                            >
+                                Dashboard
+                            </Link>
+                        </li>
+                    )
+                    : (
+                        <li className="nav-item">
+                            <Link
+                                className="nav-link"
+                                style={isActive(history, '/user/dashboard')}
+                                to="/user/dashboard"
+                            >
+                                Dashboard
+                            </Link>
+                        </li>
+                    )}
+
+                {!authInfo && (
                     <Fragment>
                         <li className="nav-item">
                             <Link
@@ -56,7 +73,7 @@ function Menu({history}) {
                     </Fragment>
                 )}
 
-                {isAuthenticated() && (
+                {authInfo && (
                     <li className="nav-item">
                         <span
                             className="nav-link"

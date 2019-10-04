@@ -3,29 +3,29 @@ import Layout from '../core/layout';
 import {isAuthenticated} from '../auth';
 import {Link} from 'react-router-dom'
 
-export default function Dashboard() {
+export default function AdminDashboard() {
 
     const {user: {_id, name, email, role}} = isAuthenticated();
 
-    const userLinks = () => {
+    const adminLinks = () => {
         return (
             <div className="card">
-                <h4 className="card-header">User Links</h4>
+                <h4 className="card-header">Admin Links</h4>
                 <ul className="list-group">
                     <li className="list-group-item">
                         <Link
-                            to='/cart'
+                            to='/create/category'
                             className='nav-link'
                         >
-                            My Cart
+                            Create Category
                         </Link>
                     </li>
                     <li className="list-group-item">
                         <Link
-                            to='/profile/update'
+                            to='/create/product'
                             className='nav-link'
                         >
-                            Update Profile
+                            Create Product
                         </Link>
                     </li>
                 </ul>
@@ -33,7 +33,7 @@ export default function Dashboard() {
         );
     };
 
-    const userInfo = () => (
+    const adminInfo = () => (
         <div className="card mb-5">
             <h3 className="card-header">User ingormation</h3>
             <ul className="list-group">
@@ -50,17 +50,6 @@ export default function Dashboard() {
         </div>
     )
 
-    const purchaseHistory = () => (
-        <div className="card mb-5">
-            <h3 className="card-header">Purchase history</h3>
-            <ul className="list-group">
-                <li className="list-group-item">
-                    history
-                </li>
-            </ul>
-        </div>
-    )
-
     return (
         <div>
             <Layout
@@ -70,11 +59,10 @@ export default function Dashboard() {
             >
                 <div className="row">
                     <div className="col-3">
-                        {userLinks()}
+                        {adminLinks()}
                     </div>
                     <div className="col-9">
-                        {userInfo()}
-                        {purchaseHistory()}
+                        {adminInfo()}
                     </div>
                 </div>
             </Layout>
