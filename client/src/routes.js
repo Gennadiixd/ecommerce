@@ -9,6 +9,7 @@ import Home from './core/home';
 import PrivateRoute from './auth/privateRoute';
 import AdminRoute from './auth/adminRoute';
 import AddCategory from './admin/addCategory';
+import AddProduct from './admin/addProduct';
 
 const Routes = () => {
     return (
@@ -32,6 +33,11 @@ const Routes = () => {
                         path="/create/category"
                         exact
                         component={AddCategory}
+                    />
+                    <AdminRoute
+                        path="/create/product"
+                        exact
+                        component={AddProduct}
                     />
                 </Switch>
             </BrowserRouter>

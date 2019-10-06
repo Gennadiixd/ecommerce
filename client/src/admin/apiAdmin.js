@@ -15,3 +15,16 @@ export const createCategory = (userId, token, name) => {
         .then(resp => resp.json())
         .catch(console.error)
 }
+
+export const createProduct = (userId, token, product) => {
+    return fetch(`${API}/product/create/${userId}`, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: product
+    })
+        .then(resp => resp.json())
+        .catch(console.error)
+}
