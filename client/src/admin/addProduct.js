@@ -5,6 +5,14 @@ import {Link} from 'react-router-dom';
 import {createProduct} from './apiAdmin'
 
 export default function AddProduct() {
+    //componentDidMount analog
+    useEffect(() => {
+        setValues({
+            ...values,
+            formData: new FormData()
+        })
+    }, [])
+
     const [values, setValues] = useState({
         name: '',
         description: '',
@@ -35,13 +43,6 @@ export default function AddProduct() {
         redirectToProfile,
         formData,
     } = values
-    //componentDidMount analog
-    useEffect(() => {
-        setValues({
-            ...values,
-            formData: new FormData()
-        })
-    }, [])
 
     const {user, token} = isAuthenticated();
 
@@ -58,8 +59,40 @@ export default function AddProduct() {
         })
     }
 
+    const clickSubmit = (event) => {
+        event.preventDefault();
+        setValues({
+            ...values,
+            error: false,
+            loading: true
+        });
+        createProduct(user._id, token, formData)
+            .then(data => {
+                if (data.error) {
+                    setValues({
+                        ...values,
+                        error: data.error
+                    })
+                } else {
+                    setValues({
+                        ...values,
+                        name: '',
+                        description: '',
+                        photo: '',
+                        price: '',
+                        quantity: '',
+                        loading: 'false',
+                        createProduct: data.name,
+                    })
+                }
+            })
+    }
+
     const newPostForm = () => (
-        <form className="mb-3">
+        <form
+            className="mb-3"
+            onSubmit={clickSubmit}
+        >
             <h4>Post Photo</h4>
             <div className="form-group">
                 <label className="btn btn-secondary">
@@ -106,7 +139,7 @@ export default function AddProduct() {
                 >
                     Price
                 </label>
-                <textarea
+                <input
                     onChange={handleChange('price')}
                     type="number"
                     className="form-control"
@@ -124,7 +157,8 @@ export default function AddProduct() {
                     onChange={handleChange('category')}
                     className="form-control"
                 >
-                    <option value="Node">Node</option>
+                    <option value="5d98f967560ca90ea7df927c">Node</option>
+                    <option value="5d98f967560ca90ea7df927c">Node</option>
                 </select>
             </div>
 
