@@ -66,19 +66,19 @@ export default function Signin() {
                 className="alert alert-info"
             >
                 LOADING...
-        </div>
+            </div>
         )
     )
 
     const redirectUser = () => {
         if (redirectToReferrer) {
-            if (authInfo && authInfo.user.role === 1){
+            if (authInfo && authInfo.user.role === 1) {
                 return <Redirect to="/admin/dashboard" />
             } else {
                 return <Redirect to="/user/dashboard" />
             }
         }
-        if (authInfo){
+        if (authInfo) {
             return <Redirect to="/" />
         }
     }

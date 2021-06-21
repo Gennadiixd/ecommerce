@@ -22,12 +22,12 @@ const Routes = () => {
                     <PrivateRoute
                         path="/user/dashboard"
                         exact
-                        component={Dashboard}
+                        Component={Dashboard}
                     />
                     <AdminRoute
                         path="/admin/dashboard"
                         exact
-                        component={AdminDashboard}
+                        Component={AdminDashboard}
                     />
                     <AdminRoute
                         path="/create/category"

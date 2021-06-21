@@ -28,3 +28,11 @@ export const createProduct = (userId, token, product) => {
         .then(resp => resp.json())
         .catch(console.error)
 }
+
+export const getCategories = () => {
+    return fetch(`${API}/categories`, {
+        method: 'GET'
+    })
+        .then(resp => resp.json())
+        .catch(console.error)
+}

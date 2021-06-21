@@ -16,7 +16,10 @@ content-type: application/json
     "password": "1qqqqqq"
 }
 ### SIGNOUT <===============
-GET http://localhost:3000/auth/signout HTTP/1.1
+GET https://myprojectdomain.dev/api/products/page?a=1 HTTP/1.1
+
+### w <===============
+GET http://localhost:3000/products/page?a=1 HTTP/1.1
 ### CREATE_CATEGORY <===============
 POST http://localhost:3000/product/create/5d7e8cf33042b632578e271c HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDdlOGNmMzMwNDJiNjMyNTc4ZTI3MWMiLCJpYXQiOjE1Njg5Mjk1NTl9.UL9LFAshywu94XP_asP8JSkO6vW3ML_i-D2dU7Y6KQs

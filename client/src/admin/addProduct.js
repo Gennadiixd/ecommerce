@@ -2,15 +2,12 @@ import React, {useState, useEffect} from 'react';
 import Layout from '../core/layout';
 import {isAuthenticated} from '../auth';
 import {Link} from 'react-router-dom';
-import {createProduct} from './apiAdmin'
+import {createProduct, getCategories} from './apiAdmin';
 
 export default function AddProduct() {
     //componentDidMount analog
     useEffect(() => {
-        setValues({
-            ...values,
-            formData: new FormData()
-        })
+        init();
     }, [])
 
     const [values, setValues] = useState({
@@ -43,6 +40,24 @@ export default function AddProduct() {
         redirectToProfile,
         formData,
     } = values
+
+    const init = () => {
+        getCategories()
+            .then(data => {
+                if (data.error) {
+                    setValues({
+                        ...values,
+                        error: data.error
+                    })
+                } else {
+                    setValues({
+                        ...values,
+                        categories: data,
+                        formData: new FormData()
+                    })
+                }
+            })
+    }
 
     const {user, token} = isAuthenticated();
 
