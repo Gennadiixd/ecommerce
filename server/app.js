@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const expressValidator = require('express-validator');
 const cors = require('cors');
 // import routes
+
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const categoryRoutes = require('./routes/category');
